@@ -39,6 +39,12 @@ jobs:
           echo "${TEST1}"
           echo "--"
 
+      - name: print env file content
+        run: |
+          echo "--"
+          cat "${GITHUB_ENV}"
+          echo "--"
+
       - name: print env context
         run: |
           echo "--"
