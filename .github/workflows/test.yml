@@ -15,4 +15,3 @@ jobs:
 
       - name: print env file content(initial value)
         run: echo "GITHUB_ENV=${GITHUB_ENV}"
-        env:
