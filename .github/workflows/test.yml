@@ -9,8 +9,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: print file path
-      run: echo "{ENV_FILE}"
-      env:
-        ENV_FILE: ${{ env.GITHUB_ENV}}
+    steps:
+      - name: print file path
+        run: echo "{ENV_FILE}"
+        env:
+          ENV_FILE: ${{ env.GITHUB_ENV}}
