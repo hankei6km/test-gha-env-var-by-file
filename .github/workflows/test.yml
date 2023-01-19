@@ -102,3 +102,10 @@ jobs:
           echo "--"
           echo "${ML}"
           echo "--"
+
+      - name: override $GITHUB_ENV
+        run: |
+          echo "GITHUB_ENV=/dev/null" >> "${GITHUB_ENV}"
+
+      - name: print env file path
+        run: echo "${GITHUB_ENV}"
