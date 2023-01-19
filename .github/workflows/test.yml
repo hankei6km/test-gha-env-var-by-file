@@ -14,8 +14,26 @@ jobs:
         run: echo "${GITHUB_ENV}"
 
       - name: print env file content(initial value)
-        run: cat "${GITHUB_ENV}"
+        run: |
+          echo "--"
+          cat "${GITHUB_ENV}"
+          echo "--"
 
       - name: add env var
         run: |
+          echo "--"
+          echo "${TEST1}"
+          echo "--"
           echo "TEST1=var1" > "${GITHUB_ENV}"
+          echo "${TEST1}"
+          echo "--"
+
+      - name: print env var
+        run: |
+          echo "--"
+          echo "${TEST1}"
+          echo "--"
+          echo "${TEST1_C}"
+          echo "--"
+        env:
+          TEST1_C: ${{ env.TEST1}}
