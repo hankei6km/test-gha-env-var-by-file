@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: print env file path
         run: echo "GITHUB_ENV=${GITHUB_ENV}"
-        env:
 
       - name: print env file content(initial value)
         run: echo "GITHUB_ENV=${GITHUB_ENV}"
