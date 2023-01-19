@@ -1,0 +1,111 @@
+name: diff-id
+on:
+  push:
+    branches:
+      - "**"
+  workflow_dispatch:
+
+env:
+  TEST99: init val
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: print env context(initial value)
+        run: |
+          echo "--"
+          echo "${ENV_C}"
+          echo "--"
+        env:
+          ENV_C: ${{ toJSON(env) }}
+
+      - name: print env file path
+        run: echo "${GITHUB_ENV}"
+
+      - name: print env file content(initial value)
+        run: |
+          echo "--"
+          cat "${GITHUB_ENV}"
+          echo "--"
+
+      - name: add env var
+        run: |
+          echo "--"
+          echo "${TEST1}"
+          echo "--"
+          echo "TEST1=val1" >> "${GITHUB_ENV}"
+          echo "${TEST1}"
+          echo "--"
+
+      - name: print env file content
+        run: |
+          echo "--"
+          cat "${GITHUB_ENV}"
+          echo "--"
+
+      - name: print env context
+        run: |
+          echo "--"
+          echo "${ENV_C}"
+          echo "--"
+        env:
+          ENV_C: ${{ toJSON(env) }}
+
+      - name: print env var
+        run: |
+          echo "--"
+          echo "${TEST1}"
+          echo "--"
+          echo "${TEST1_C}"
+          echo "--"
+        env:
+          TEST1_C: ${{ env.TEST1}}
+
+      - name: override env var
+        run: |
+          echo "--"
+          echo "${TEST99}"
+          echo "--"
+          echo "TEST99=val99" >> "${GITHUB_ENV}"
+          echo "${TEST99}"
+          echo "--"
+
+      - name: print env context
+        run: |
+          echo "--"
+          echo "${ENV_C}"
+          echo "--"
+        env:
+          ENV_C: ${{ toJSON(env) }}
+
+      - name: print env var
+        run: |
+          echo "--"
+          echo "${TEST99}"
+          echo "--"
+          echo "${TEST99_C}"
+          echo "--"
+        env:
+          TEST99_C: ${{ env.TEST99}}
+
+      - name: multiline strings
+        run: |
+          echo "ML<<EOF" >> "${GITHUB_ENV}"
+          echo -e "line1\nline2" >> "${GITHUB_ENV}"
+          echo "line3" >> "${GITHUB_ENV}"
+          echo "EOF" >> "${GITHUB_ENV}"
+
+      - name: print env var
+        run: |
+          echo "--"
+          echo "${ML}"
+          echo "--"
+
+      - name: override $GITHUB_ENV
+        run: |
+          echo "GITHUB_ENV=/dev/null" >> "${GITHUB_ENV}"
+
+      - name: print env file path
+        run: echo "${GITHUB_ENV}"
