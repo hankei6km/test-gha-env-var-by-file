@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: print file path
-        run: echo "GITHUB_ENV=${ENV_FILE}"
+      - name: print env file path
+        run: echo "GITHUB_ENV=${GITHUB_ENV}"
         env:
-          ENV_FILE: ${{ env.GITHUB_ENV}}
+
+      - name: print env file content(initial value)
+        run: echo "GITHUB_ENV=${GITHUB_ENV}"
+        env:
