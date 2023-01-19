@@ -16,7 +16,7 @@ jobs:
           echo "${ENV_C}"
           echo "--"
         env:
-          ENV_C: ${{ env }}
+          ENV_C: ${{ toJSON(env) }}
 
       - name: print env file path
         run: echo "${GITHUB_ENV}"
@@ -42,7 +42,7 @@ jobs:
           echo "${ENV_C}"
           echo "--"
         env:
-          ENV_C: ${{ env }}
+          ENV_C: ${{ toJSON(env) }}
 
       - name: print env var
         run: |
