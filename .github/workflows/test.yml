@@ -5,6 +5,10 @@ on:
       - "**"
   workflow_dispatch:
 
+env:
+  TEST1: init value
+  TEST99: val99
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -32,7 +36,7 @@ jobs:
           echo "--"
           echo "${TEST1}"
           echo "--"
-          echo "TEST1=var1" > "${GITHUB_ENV}"
+          echo "TEST1=val1" > "${GITHUB_ENV}"
           echo "${TEST1}"
           echo "--"
 
