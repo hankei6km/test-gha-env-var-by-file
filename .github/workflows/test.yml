@@ -11,7 +11,11 @@ jobs:
 
     steps:
       - name: print env file path
-        run: echo "GITHUB_ENV=${GITHUB_ENV}"
+        run: echo "${GITHUB_ENV}"
 
       - name: print env file content(initial value)
-        run: echo "GITHUB_ENV=${GITHUB_ENV}"
+        run: cat "${GITHUB_ENV}"
+
+      - name: add env var
+        run: |
+          echo "TEST1=var1" > "${GITHUB_ENV}"
