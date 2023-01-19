@@ -83,3 +83,16 @@ jobs:
           echo "--"
         env:
           TEST99_C: ${{ env.TEST99}}
+
+      - name: multiline strings
+        run: |
+          echo "ML<<<EOF" > "${GITHUB_ENV}"
+          echo -e "line1\nline2" > "${GITHUB_ENV}"
+          echo "line3" > "${GITHUB_ENV}"
+          echo "EOF" > "${GITHUB_ENV}"
+
+      - name: print env var
+        run: |
+          echo "--"
+          echo "${ML}"
+          echo "--"
