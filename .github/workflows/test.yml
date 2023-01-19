@@ -86,7 +86,7 @@ jobs:
 
       - name: multiline strings
         run: |
-          echo "ML<<EOF" > "${GITHUB_ENV}"
+          echo "ML<<EOF' > "${GITHUB_ENV}"
           echo -e "line1\nline2" > "${GITHUB_ENV}"
           echo "line3" > "${GITHUB_ENV}"
           echo "EOF" > "${GITHUB_ENV}"
