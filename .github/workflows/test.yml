@@ -11,6 +11,6 @@ jobs:
 
     steps:
       - name: print file path
-        run: echo "{ENV_FILE}"
+        run: echo "GITHUB_ENV=${ENV_FILE}"
         env:
           ENV_FILE: ${{ env.GITHUB_ENV}}
