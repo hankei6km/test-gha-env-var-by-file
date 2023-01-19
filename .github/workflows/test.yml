@@ -6,8 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  TEST1: init value
-  TEST99: val99
+  TEST99: init val
 
 jobs:
   test:
@@ -57,3 +56,30 @@ jobs:
           echo "--"
         env:
           TEST1_C: ${{ env.TEST1}}
+
+      - name: override env var
+        run: |
+          echo "--"
+          echo "${TEST99}"
+          echo "--"
+          echo "TEST99=val99" > "${GITHUB_ENV}"
+          echo "${TEST99}"
+          echo "--"
+
+      - name: print env context
+        run: |
+          echo "--"
+          echo "${ENV_C}"
+          echo "--"
+        env:
+          ENV_C: ${{ toJSON(env) }}
+
+      - name: print env var
+        run: |
+          echo "--"
+          echo "${TEST99}"
+          echo "--"
+          echo "${TEST99_C}"
+          echo "--"
+        env:
+          TEST99_C: ${{ env.TEST99}}
